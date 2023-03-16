@@ -1,5 +1,7 @@
-﻿using Entidades;
+﻿using Datos;
+using Entidades;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,6 +14,9 @@ namespace Vista
             InitializeComponent();
         }
         string tipoOperacion;
+        DataTable dt = new DataTable();
+        UsuarioDB UsuarioDB = new UsuarioDB();
+        Usuario user = new Usuario();
 
         private void HabilitarControles()
         {
@@ -142,5 +147,17 @@ namespace Vista
                 FotopictureBox.Image = Image.FromFile(dialog.FileName);
             }
         }
+
+        private void UsuariosForm_Load(object sender, EventArgs e)
+        {
+            TraerUsuarios();
+        }
+
+        private void TraerUsuarios()
+        {
+            dt = UsuarioDB.DevolverUsuarios();
+            UsuariosdataGridView.DataSource = dt;
+        }
+
     }
 }
