@@ -199,7 +199,6 @@
             // Modificarbutton
             // 
             this.Modificarbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Modificarbutton.Enabled = false;
             this.Modificarbutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modificarbutton.Location = new System.Drawing.Point(193, 273);
             this.Modificarbutton.Name = "Modificarbutton";
@@ -212,7 +211,6 @@
             // Eliminarbutton
             // 
             this.Eliminarbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Eliminarbutton.Enabled = false;
             this.Eliminarbutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Eliminarbutton.Location = new System.Drawing.Point(370, 273);
             this.Eliminarbutton.Name = "Eliminarbutton";
@@ -220,6 +218,7 @@
             this.Eliminarbutton.TabIndex = 17;
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.UseVisualStyleBackColor = false;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
             // Guardarbutton
             // 
@@ -249,10 +248,12 @@
             // 
             // UsuariosdataGridView
             // 
+            this.UsuariosdataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UsuariosdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsuariosdataGridView.Location = new System.Drawing.Point(2, 313);
             this.UsuariosdataGridView.Name = "UsuariosdataGridView";
-            this.UsuariosdataGridView.Size = new System.Drawing.Size(632, 206);
+            this.UsuariosdataGridView.Size = new System.Drawing.Size(687, 206);
             this.UsuariosdataGridView.TabIndex = 19;
             // 
             // errorProvider1
@@ -263,7 +264,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 521);
+            this.ClientSize = new System.Drawing.Size(690, 521);
             this.Controls.Add(this.UsuariosdataGridView);
             this.Controls.Add(this.Cancelarbutton);
             this.Controls.Add(this.Eliminarbutton);

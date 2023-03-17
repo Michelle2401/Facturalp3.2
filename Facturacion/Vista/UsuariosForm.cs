@@ -3,6 +3,7 @@ using Entidades;
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Vista
@@ -102,7 +103,7 @@ namespace Vista
                 }
                 errorProvider1.Clear();
 
-                Usuario user = new Usuario();
+
                 user.CodigoUsuario = CodigotextBox.Text;
                 user.Nombre = NombretextBox.Text;
                 user.Contraseña = ContraseñatextBox.Text;
@@ -116,6 +117,47 @@ namespace Vista
                     FotopictureBox.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                     user.Foto = ms.GetBuffer();
                 }
+                bool inserto = UsuarioDB.Insertar(user);
+                if (inserto)
+                {
+                    LimpiarControles();
+                    DeshabilitarControles();
+                    TraerUsuarios();
+                    MessageBox.Show("Registro Guardado");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo guardar el registro");
+                }
+
+            }
+            else if (tipoOperacion == "Modificar")
+            {
+                user.CodigoUsuario = CodigotextBox.Text;
+                user.Nombre = NombretextBox.Text;
+                user.Contraseña = ContraseñatextBox.Text;
+                user.Rol = RolcomboBox.Text;
+                user.Correo = CorreotextBox.Text;
+                user.EstaActivo = EstaActivocheckBox.Checked;
+
+                if (FotopictureBox.Image != null)
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    FotopictureBox.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    user.Foto = ms.GetBuffer();
+                }
+                bool modifico = UsuarioDB.Editar(user);
+                if (modifico)
+                {
+                    LimpiarControles();
+                    DeshabilitarControles();
+                    TraerUsuarios();
+                    MessageBox.Show("Registro actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el registro");
+                }
 
             }
         }
@@ -124,17 +166,31 @@ namespace Vista
         {
             tipoOperacion = "Modificar";
 
-            //if (UsuariosdataGridView.SelectedRows.Count > 0)
-            // {
-            //CodigotextBox.Text = UsuariosdataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString();
-            // NombretextBox.Text = UsuariosdataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
-            // ContraseñatextBox.Text = UsuariosdataGridView.CurrentRow.Cells["Contrasena"].Value.ToString();
-            //CorreotextBox.Text = UsuariosdataGridView.CurrentRow.Cells["Correo"].Value.ToString();
-            //RolcomboBox.Text = UsuariosdataGridView.CurrentRow.Cells["Rol"].Value.ToString();
-            //EstaActivocheckBox.Checked = Convert.ToBoolean(UsuariosdataGridView.CurrentRow.Cells["EstaActivo"].Value);
+            if (UsuariosdataGridView.SelectedRows.Count > 0)
+            {
+                CodigotextBox.Text = UsuariosdataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString();
+                NombretextBox.Text = UsuariosdataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
+                ContraseñatextBox.Text = UsuariosdataGridView.CurrentRow.Cells["Contrasena"].Value.ToString();
+                CorreotextBox.Text = UsuariosdataGridView.CurrentRow.Cells["Correo"].Value.ToString();
+                RolcomboBox.Text = UsuariosdataGridView.CurrentRow.Cells["Rol"].Value.ToString();
+                EstaActivocheckBox.Checked = Convert.ToBoolean(UsuariosdataGridView.CurrentRow.Cells["EstaActivo"].Value);
 
-            //byte[] miFoto = UsuarioDB.DevolverFoto(UsuariosDataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString());
-            // }
+                byte[] miFoto = UsuarioDB.DevolverFoto(UsuariosdataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString());
+
+                if (miFoto.Length > 0)
+                {
+                    MemoryStream ms = new MemoryStream(miFoto);
+                    FotopictureBox.Image = System.Drawing.Bitmap.FromStream(ms);
+
+                }
+
+                HabilitarControles();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro");
+            }
+
         }
 
         private void Adjuntarbutton_Click(object sender, EventArgs e)
@@ -159,5 +215,31 @@ namespace Vista
             UsuariosdataGridView.DataSource = dt;
         }
 
+        private void Eliminarbutton_Click(object sender, EventArgs e)
+        {
+            if (UsuariosdataGridView.SelectedRows.Count > 0)
+            {
+                DialogResult resultado = MessageBox.Show("Esta seguro de eliminar el registro", "Advertencia", MessageBoxButtons.YesNo);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    bool elimino = UsuarioDB.Eliminar(UsuariosdataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString());
+
+                    if (elimino)
+                    {
+                        LimpiarControles();
+                        DeshabilitarControles();
+                        TraerUsuarios();
+                        MessageBox.Show("Registro eliminado");
+                    }
+                    else
+                    { MessageBox.Show("No se pudo eliminar el registro"); }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro");
+            }
+        }
     }
 }
