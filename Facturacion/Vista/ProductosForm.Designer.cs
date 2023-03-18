@@ -46,6 +46,8 @@
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.ProductosdataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.EstaActivocheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenpictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -144,13 +146,14 @@
             this.AdjuntarImagenbutton.Size = new System.Drawing.Size(44, 42);
             this.AdjuntarImagenbutton.TabIndex = 9;
             this.AdjuntarImagenbutton.UseVisualStyleBackColor = false;
+            this.AdjuntarImagenbutton.Click += new System.EventHandler(this.AdjuntarImagenbutton_Click);
             // 
             // Cancelarbutton
             // 
             this.Cancelarbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Cancelarbutton.Enabled = false;
             this.Cancelarbutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancelarbutton.Location = new System.Drawing.Point(431, 189);
+            this.Cancelarbutton.Location = new System.Drawing.Point(439, 217);
             this.Cancelarbutton.Name = "Cancelarbutton";
             this.Cancelarbutton.Size = new System.Drawing.Size(86, 35);
             this.Cancelarbutton.TabIndex = 23;
@@ -161,21 +164,21 @@
             // Eliminarbutton
             // 
             this.Eliminarbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Eliminarbutton.Enabled = false;
             this.Eliminarbutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Eliminarbutton.Location = new System.Drawing.Point(344, 190);
+            this.Eliminarbutton.Location = new System.Drawing.Point(352, 218);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(81, 34);
             this.Eliminarbutton.TabIndex = 22;
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.UseVisualStyleBackColor = false;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
             // Guardarbutton
             // 
             this.Guardarbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Guardarbutton.Enabled = false;
             this.Guardarbutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Guardarbutton.Location = new System.Drawing.Point(262, 190);
+            this.Guardarbutton.Location = new System.Drawing.Point(270, 218);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(76, 33);
             this.Guardarbutton.TabIndex = 21;
@@ -186,9 +189,8 @@
             // Modificarbutton
             // 
             this.Modificarbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Modificarbutton.Enabled = false;
             this.Modificarbutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Modificarbutton.Location = new System.Drawing.Point(167, 190);
+            this.Modificarbutton.Location = new System.Drawing.Point(175, 218);
             this.Modificarbutton.Name = "Modificarbutton";
             this.Modificarbutton.Size = new System.Drawing.Size(89, 34);
             this.Modificarbutton.TabIndex = 20;
@@ -200,7 +202,7 @@
             // 
             this.Nuevobutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Nuevobutton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nuevobutton.Location = new System.Drawing.Point(85, 190);
+            this.Nuevobutton.Location = new System.Drawing.Point(93, 218);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(76, 34);
             this.Nuevobutton.TabIndex = 19;
@@ -211,20 +213,40 @@
             // ProductosdataGridView
             // 
             this.ProductosdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProductosdataGridView.Location = new System.Drawing.Point(0, 230);
+            this.ProductosdataGridView.Location = new System.Drawing.Point(0, 258);
             this.ProductosdataGridView.Name = "ProductosdataGridView";
-            this.ProductosdataGridView.Size = new System.Drawing.Size(583, 206);
+            this.ProductosdataGridView.Size = new System.Drawing.Size(583, 178);
             this.ProductosdataGridView.TabIndex = 24;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 19);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Esta Activo:";
+            // 
+            // EstaActivocheckBox
+            // 
+            this.EstaActivocheckBox.AutoSize = true;
+            this.EstaActivocheckBox.Location = new System.Drawing.Point(108, 179);
+            this.EstaActivocheckBox.Name = "EstaActivocheckBox";
+            this.EstaActivocheckBox.Size = new System.Drawing.Size(15, 14);
+            this.EstaActivocheckBox.TabIndex = 26;
+            this.EstaActivocheckBox.UseVisualStyleBackColor = true;
+            // 
             // ProductosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(586, 440);
+            this.Controls.Add(this.EstaActivocheckBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.ProductosdataGridView);
             this.Controls.Add(this.Cancelarbutton);
             this.Controls.Add(this.Eliminarbutton);
@@ -245,6 +267,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProductosForm";
             this.Text = "Productos";
+            this.Load += new System.EventHandler(this.ProductosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ImagenpictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosdataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -272,5 +295,7 @@
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.DataGridView ProductosdataGridView;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.CheckBox EstaActivocheckBox;
+        private System.Windows.Forms.Label label5;
     }
 }

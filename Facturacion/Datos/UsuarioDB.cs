@@ -47,7 +47,7 @@ namespace Datos
                     }
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
 
 
@@ -83,7 +83,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
 
 
@@ -118,7 +118,7 @@ namespace Datos
                 }
 
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
 
 
@@ -145,7 +145,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
 
 
@@ -171,7 +171,7 @@ namespace Datos
                     }
                 }
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
 
 
@@ -202,7 +202,7 @@ namespace Datos
                 }
 
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
 
             }

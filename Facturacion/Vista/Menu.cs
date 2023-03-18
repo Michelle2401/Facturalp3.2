@@ -25,5 +25,19 @@ namespace Vista
             productosForm.MdiParent = this;
             productosForm.Show();
         }
+
+        private void NuevaFacturatoolStripButton_Click(object sender, EventArgs e)
+        {
+            FacturaForm facturaForm = new FacturaForm();
+            facturaForm.MdiParent = this;
+            facturaForm.Show();
+        }
+
+        private void ClientestoolStripButton_Click(object sender, EventArgs e)
+        {
+            ClientesForm clientesForm = new ClientesForm();
+            clientesForm.MdiParent = this;
+            clientesForm.Show();
+        }
     }
 }
